@@ -25,6 +25,13 @@ app.get("/hello", (req, res) => {
 app.get("/echo/:id", (req, res) => {
     res.json({
         id: req.params.id
+
+/*         Or:
+    const response = {
+        id: req.params.id
+    };
+    res.send(response);
+*/
     });
 });
 
