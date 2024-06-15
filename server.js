@@ -22,6 +22,12 @@ app.get("/hello", (req, res) => {
     // ... sends a JSON object back to the client
 });
 
+app.get("/echo/:id", (req, res) => {
+    res.json({
+        id: req.params.id
+    });
+});
+
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`);
   });
