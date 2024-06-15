@@ -13,7 +13,9 @@ const port = 3000;
 app.get("/hello", (req, res) => {
     // send {message: "Hello, world!"} back to the client
 
-    res.json({msg: "Hello, world!"}); // the object maps string to string
+    res.json({
+        msg: "Hello world"  // the object maps string to string
+    }); 
 
     // what is the difference between res.send and res.json?
     // res.send sends a string back to the client while res.json ...
@@ -22,4 +24,4 @@ app.get("/hello", (req, res) => {
 
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`);
-});
+  });
