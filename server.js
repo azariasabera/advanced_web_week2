@@ -9,6 +9,7 @@ http.createServer(function(req, res){
 const express = require("express");
 const app = express();
 const router = express.Router();
+const path = require("path");
 const port = 3000;
 
 app.use(express.json()); // middleware to parse JSON
@@ -55,6 +56,8 @@ router.post("/sum", (req, res) => {
         });
     }
 });
+
+app.use(express.static(path.join(__dirname, "public")));
 
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`);
