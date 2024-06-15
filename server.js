@@ -57,6 +57,20 @@ router.post("/sum", (req, res) => {
     }
 });
 
+router.post("/list", (req, res) => {
+    try {
+        let list = [];
+        list.push(req.body.text);
+        res.json({
+            list: list
+        });
+    } catch (error) {
+        res.status(400).json({
+            msg: "Invalid request"
+        });
+    }
+});
+
 app.use(express.static(path.join(__dirname, "public")));
 
 app.listen(port, () => {
