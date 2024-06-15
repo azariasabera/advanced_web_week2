@@ -12,6 +12,8 @@ const router = express.Router();
 const path = require("path");
 const port = 3000;
 
+let texts = [];
+
 app.use(express.json()); // middleware to parse JSON
 app.use(router); // use the router
 
@@ -59,10 +61,9 @@ router.post("/sum", (req, res) => {
 
 router.post("/list", (req, res) => {
     try {
-        let list = [];
-        list.push(req.body.text);
+        texts.push(req.body.text);
         res.json({
-            list: list
+            list: texts
         });
     } catch (error) {
         res.status(400).json({
