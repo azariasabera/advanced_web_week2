@@ -8,9 +8,13 @@ http.createServer(function(req, res){
 
 const express = require("express");
 const app = express();
+const router = express.Router();
 const port = 3000;
 
-app.get("/hello", (req, res) => {
+app.use(express.json()); // middleware to parse JSON
+app.use(router); // use the router
+
+router.get("/hello", (req, res) => {
     // send {message: "Hello, world!"} back to the client
 
     res.json({
@@ -22,7 +26,7 @@ app.get("/hello", (req, res) => {
     // ... sends a JSON object back to the client
 });
 
-app.get("/echo/:id", (req, res) => {
+router.get("/echo/:id", (req, res) => {
     res.json({
         id: req.params.id
 
@@ -33,6 +37,23 @@ app.get("/echo/:id", (req, res) => {
     res.send(response);
 */
     });
+});
+
+router.post("/sum", (req, res) => {
+    try {
+        const numbers = req.body.numbers;
+        let sum = 0;
+        numbers.forEach(number => {
+            sum += number;
+        });
+        res.json({
+            sum: sum
+        });
+    } catch (error) {    
+        res.status(400).json({
+            msg: "Invalid request"
+        });
+    }
 });
 
 app.listen(port, () => {
