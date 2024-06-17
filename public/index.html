@@ -13,7 +13,7 @@
 
     <script>
         document.getElementById('submit-data').addEventListener('click', function() {
-            var text = document.getElementById('input-text').value;
+            let text = document.getElementById('input-text').value;
             fetch('http://localhost:3000/list', {
                 method: "post",
                 headers: {
